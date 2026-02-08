@@ -1,0 +1,6 @@
+{
+  "scriptPriority": ["test", "build", "start", "dev"],
+  "allowedCommands": ["npm", "node", "docker", "python"],
+  "allowedScriptEntrypoints": ["node", "npm", "tsx", "tsc", "vitest"],
+  "blockedScriptEntrypoints": ["curl", "wget", "bash", "sh"]
+}

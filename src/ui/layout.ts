@@ -1,0 +1,1 @@
+export const CINEMATIC_PANEL_WIDTH = 96;

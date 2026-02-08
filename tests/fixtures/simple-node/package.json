@@ -1,0 +1,12 @@
+{
+  "name": "simple-fixture",
+  "version": "1.0.0",
+  "description": "Fixture app for RepoSherlock snapshots",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "build": "node -e \"console.log('build')\"",
+    "test": "node -e \"console.log('test')\"",
+    "format": "node -e \"console.log('format')\""
+  }
+}

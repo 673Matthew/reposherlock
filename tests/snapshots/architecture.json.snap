@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    {
+      "id": "src/index.js",
+      "path": "src/index.js",
+      "degree": 1
+    },
+    {
+      "id": "src/util.js",
+      "path": "src/util.js",
+      "degree": 1
+    }
+  ],
+  "edges": [
+    {
+      "from": "src/index.js",
+      "to": "src/util.js"
+    }
+  ],
+  "topModules": [
+    {
+      "id": "src/index.js",
+      "path": "src/index.js",
+      "degree": 1
+    },
+    {
+      "id": "src/util.js",
+      "path": "src/util.js",
+      "degree": 1
+    }
+  ],
+  "metrics": {
+    "sourceFiles": 2,
+    "parsedFiles": 2,
+    "tsJsSourceFiles": 2,
+    "tsJsParsedFiles": 2,
+    "connectedFiles": 2,
+    "parseCoverage": 1,
+    "tsJsCoverage": 1,
+    "filesWithEdges": 2,
+    "tsJsFilesWithEdges": 2,
+    "tsJsGraphYield": 1
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "reposherlock",
+  "version": "0.1.0",
+  "description": "Drop a GitHub repo URL and get architecture, run guidance, risks, and actionable issues.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "reposherlock": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsx --test tests/**/*.test.ts",
+    "dev": "tsx src/cli.ts",
+    "sherlock": "node dist/cli.js",
+    "reposherlock": "node dist/cli.js",
+    "start": "node dist/cli.js",
+    "changelog": "node scripts/changelog.mjs",
+    "release:prepare": "node scripts/release-prepare.mjs"
+  },
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=20"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "cli-cursor": "^5.0.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^13.1.0",
+    "log-update": "^7.1.0",
+    "ora": "^9.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

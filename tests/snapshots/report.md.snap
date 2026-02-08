@@ -1,0 +1,166 @@
+# RepoSherlock Report
+
+```yaml
+generated_at: <TIMESTAMP>
+repo_input: .
+repo_name: <REPO_NAME>
+repo_source: local
+tool_version: 0.1.0
+config_snapshot: '<CONFIG>'
+```
+
+> Heuristic analysis. Verify commands and assumptions before production use.
+
+## Scan Confidence & Coverage
+
+- Files scanned: 7
+- Text files read: 7
+- JS/TS files: 2
+- Parse success: 2/2 (100%)
+- Graph yield: 2/2 (100%)
+- Parsed modules: 2
+- Skipped (size/binary): 0
+- Warnings count: 0
+
+## What This Repo Likely Is
+
+- **Project type:** app
+- **Runtime:** node
+- **Framework guess:** unknown
+- **Purpose guess:** Fixture app for RepoSherlock snapshots
+- **Runtime entrypoints:** none
+- **Library entrypoints:** `src/index.js`
+- **Confidence:** 0.68 (1 evidence point)
+
+Evidence:
+- Source: package.json presence | Path: `package.json` | Snippet: `scripts: start, build, test, format`
+- Source: language breakdown | Path: `file_index.json` | Snippet: `top language: JSON`
+- Source: package.json description | Path: `package.json` | Snippet: `Fixture app for RepoSherlock snapshots`
+
+## How To Run (Best Guess)
+
+### Recommended (Verified)
+
+- No verified commands (`--try-run` was not executed).
+
+### Suggested (Not Verified)
+
+- `npm ci` (found by deterministic script detection, not executed)
+- `npm run test` (found by deterministic script detection, not executed)
+- `npm run start` (found by deterministic script detection, not executed)
+- `npm run build` (found by deterministic script detection, not executed)
+
+### Deterministic Discovery
+
+- Install candidates: `npm ci`
+- Test candidates: `npm run test`
+- Run candidates: `npm run start`, `npm run build`
+
+### Recommended
+
+- `npm run start`
+- Reason: runtime start command selected as primary execution path
+- Based on: package.json#scripts.start: node src/index.js
+
+- **Confidence:** 0.75 (3 evidence points)
+
+Evidence:
+- Source: package.json scripts | Path: `package.json` | Snippet: `scripts.start: node src/index.js`
+- Source: package.json scripts | Path: `package.json` | Snippet: `scripts.build: node -e "console.log('build')"`
+- Source: package.json scripts | Path: `package.json` | Snippet: `scripts.test: node -e "console.log('test')"`
+
+## Configuration / Env Vars (Best Guess)
+
+- Detection method: code patterns (`process.env`/`os.getenv`) + `.env.example` + README mentions.
+
+### Required (Always)
+
+- `API_BASE_URL` (confidence 0.93)
+- `LOG_LEVEL` (confidence 0.88)
+
+### Required (Because Of Flags)
+
+- No flag-scoped required env vars detected.
+
+### Optional
+
+- No optional env vars detected.
+
+### Mentioned In Docs
+
+- No env vars found only in docs/README.
+
+- **Confidence:** 0.73 (3 evidence points)
+
+Evidence:
+- Source: .env example | Path: `.env.example` | Snippet: `API_BASE_URL: API_BASE_URL=https://example.local`
+- Source: Node env access | Path: `src/index.js` | Snippet: `API_BASE_URL: const apiBase = process.env.API_BASE_URL || "http://localhost:3000";`
+- Source: .env example | Path: `.env.example` | Snippet: `LOG_LEVEL: LOG_LEVEL=info`
+
+## Architecture
+
+- Nodes: 2
+- Edges: 1
+- Diagram: `architecture.mmd`
+- Module map coverage: 100% of TS/JS files parsed (2/2)
+- Top modules by centrality:
+- src/index.js (degree 1)
+- src/util.js (degree 1)
+- Hotspot reasons:
+- src/index.js: high fan-out (1) touching many modules
+- src/util.js: high fan-in (1) from multiple modules
+
+### Why These Hotspots Matter
+
+- Higher-degree modules often become change bottlenecks and can amplify regression risk.
+
+### Suggested Refactors
+
+- src/index.js: Reduce index barrel fan-in by importing concrete modules directly where possible (degree 1).
+- src/util.js: Review responsibilities and extract smaller units to lower coupling (degree 1).
+
+- **Confidence:** 0.84 (4 evidence points)
+
+Evidence:
+- Source: module map parser | Path: `architecture.json` | Snippet: `parsed 2/2 source files`
+- Source: module graph stats | Path: `architecture.json` | Snippet: `nodes=2, edges=1, ts/js coverage=100%`
+- Source: top centrality module | Path: `src/index.js` | Snippet: `degree=1`
+- Source: top centrality module | Path: `src/util.js` | Snippet: `degree=1`
+
+## Risks
+
+- License detected: MIT
+- Severity counts: high=0, med=0, low=0
+- Full details: `risks.md` and `risks.json`
+
+## Where To Improve
+
+- Improvement counts: high=0, med=0, low=0
+- Formatting: tool unknown (format script exists but no prettier/biome/eslint dependency or config file was detected).
+- Formatting evidence: package.json (scripts.format: node -e "console.log('format')")
+- No improvement suggestions generated.
+
+## Suggested Issues (Top 5)
+
+- No issues generated.
+
+## Try-Run Results
+
+- Try-run was not executed (`--try-run` disabled).
+
+## Deliverables
+
+- `report.md` / `report.json`
+- `architecture.mmd` / `architecture.json`
+- `risks.md` / `risks.json`
+- `issues.json` / `issues.good-first.md` / `issues.good-first.json`
+- `README_2.0.md`
+- `logs.jsonl` / `file_index.json`
+
+## LLM Note
+
+- LLM mode disabled.
+
+## Next 3 Actions
+
+1. No immediate action required from current heuristics.

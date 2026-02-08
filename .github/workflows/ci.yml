@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  node:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Smoke Analyze (Fixture)
+        run: node dist/cli.js analyze ./tests/fixtures/simple-node --no-network --depth 6 --max-files 800 --out .reposherlock/output/ci-smoke
+
+      - name: Smoke Report
+        run: node dist/cli.js report .reposherlock/output/ci-smoke
+
+      - name: Verify Core Artifacts
+        run: |
+          test -f .reposherlock/output/ci-smoke/report.md
+          test -f .reposherlock/output/ci-smoke/report.json
+          test -f .reposherlock/output/ci-smoke/issues.json
+          test -f .reposherlock/output/ci-smoke/issues.sarif
+          test -f .reposherlock/output/ci-smoke/architecture.json
+          test -f .reposherlock/output/ci-smoke/architecture.mmd
+
+  bun:
+    name: Bun
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install
+        run: bun install
+
+      - name: Build
+        run: bun run build
+
+      - name: CLI Help
+        run: bun run src/cli.ts --help
